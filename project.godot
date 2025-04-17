@@ -13,16 +13,3 @@ config_version=5
 config/name="Nuevo Proyecto de Juego"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-NodeSignals="*res://Singletons/node_signals.gd"
-
-[file_customization]
-
-folder_colors={
-"res://Resources/": "purple",
-"res://Scenes/": "yellow",
-"res://Scripts/": "red",
-"res://Singletons/": "orange"
-}
