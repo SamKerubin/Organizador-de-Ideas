@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj4cc4d8htx61"]
+
+[ext_resource type="Script" uid="uid://bbjer2q6yua4p" path="res://Scripts/Nodes/base_node.gd" id="1_6j1rx"]
+
+[node name="BaseNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6j1rx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
