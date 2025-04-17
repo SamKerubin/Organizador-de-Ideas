@@ -13,3 +13,17 @@ config_version=5
 config/name="Nuevo Proyecto de Juego"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/inferred_declaration=2
+
+[file_customization]
+
+folder_colors={
+"res://Resoruces/": "purple",
+"res://Scenes/": "yellow",
+"res://Scripts/": "red",
+"res://Singletons/": "orange"
+}
