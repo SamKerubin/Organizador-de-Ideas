@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NodeInfo" load_steps=2 format=3 uid="uid://dkvo3vfo0evl1"]
+
+[ext_resource type="Script" uid="uid://d2w1akla28h86" path="res://Scripts/Nodes/node_info.gd" id="1_t3jj2"]
+
+[resource]
+script = ExtResource("1_t3jj2")
+name = "New Idea"
+description = "This is a description"
+metadata/_custom_type_script = "uid://d2w1akla28h86"
