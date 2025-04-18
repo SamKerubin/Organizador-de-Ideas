@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 NodeInfoManager="*res://Singletons/node_info_manager.gd"
 NodeManager="*res://Singletons/node_manager.gd"
+SavingManager="*res://Singletons/saving_manager.gd"
 
 [debug]
 

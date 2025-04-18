@@ -1,32 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch4tu3aqobhrx"]
+[gd_scene load_steps=4 format=3 uid="uid://ch4tu3aqobhrx"]
 
 [ext_resource type="Script" uid="uid://yavfcc0as732" path="res://Scripts/Nodes/base_node.gd" id="1_6j1rx"]
 [ext_resource type="Resource" uid="uid://dkvo3vfo0evl1" path="res://Resoruces/Nodes/node_info.tres" id="2_75m2k"]
+[ext_resource type="Script" uid="uid://x757twxd4cb4" path="res://Scenes/Nodes/base_node_panel.gd" id="3_gned8"]
 
 [node name="BaseNode" type="Control"]
+z_index = -10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6j1rx")
 info = ExtResource("2_75m2k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1051.0
-offset_bottom = -546.0
+offset_right = -1032.0
+offset_bottom = -521.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -20.0
+offset_right = 50.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
 layout_mode = 0
-offset_right = 101.0
-offset_bottom = 102.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_right = 123.0
+offset_bottom = 123.0
+script = ExtResource("3_gned8")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Panel" to="Panel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="Panel" method="_on_mouse_exited"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2w1akla28h86" path="res://Scripts/Nodes/node_info.gd" id="1_t3jj2"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_t3jj2")
 name = "New Idea"
 description = "This is a description"
