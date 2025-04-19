@@ -25,7 +25,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 				click_start_pos = get_viewport().get_mouse_position()
 				click_time = Time.get_ticks_msec() / 1000
-				drag_offset = get_viewport().get_mouse_position()
+				drag_offset = get_viewport().get_mouse_position() - global_position
 
 			if not event.pressed and clicked:
 				var release_pos: Vector2 = get_viewport().get_mouse_position()
@@ -36,6 +36,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 				clicked = false
 				dragging = false
+				drag_offset = Vector2.ZERO
 
 				if dist < MAX_CLICK_DISTANCE and time_dif < MAX_CLICK_TIME:
 					component_clicked.emit()
@@ -44,7 +45,6 @@ func _on_gui_input(event: InputEvent) -> void:
 		if not dragging:
 			if click_start_pos.distance_to(get_viewport().get_mouse_position()) > MAX_CLICK_DISTANCE:
 				dragging = true
-
 		if dragging:
 			mouse_default_cursor_shape = 6
 			var node_position: Vector2 = get_viewport().get_mouse_position() - drag_offset

@@ -6,7 +6,7 @@ signal node_deleted(deleted_node: BaseNode)
 
 var nodes: Dictionary[String, BaseNode]
 
-func create_node(node_name: String, node_desc: String, position: Vector2,
+func create_node(node_name: String, node_desc: String, position: Vector2=BaseNode.get_default_position(),
 				node_relations: Array[NodeRelation]=[]) -> BaseNode:
 	if node_name in nodes:
 		print("Nodo ya existente")

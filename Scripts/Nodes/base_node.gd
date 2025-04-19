@@ -76,6 +76,6 @@ func get_relations() -> Array[NodeRelation]:
 func have_any_relation() -> bool:
 	return relations != []
 
-static func get_default_position(center: Vector2=Vector2.ZERO, radius: float= 100) -> Vector2:
+static func get_default_position(center: Vector2=Vector2.ZERO, radius: float=100) -> Vector2:
 	var angle: float = randf() * TAU
 	return center + Vector2(cos(angle), sin(angle))
