@@ -2,31 +2,35 @@
 
 [ext_resource type="Script" uid="uid://yavfcc0as732" path="res://Scripts/Nodes/base_node.gd" id="1_6j1rx"]
 [ext_resource type="Resource" uid="uid://dkvo3vfo0evl1" path="res://Resoruces/Nodes/node_info.tres" id="2_75m2k"]
-[ext_resource type="Script" uid="uid://x757twxd4cb4" path="res://Scenes/Nodes/base_node_panel.gd" id="3_gned8"]
+[ext_resource type="PackedScene" uid="uid://68vdd3vft60w" path="res://Scenes/Components/DraggableComponent.tscn" id="3_gned8"]
 
 [node name="BaseNode" type="Control"]
-z_index = -10
+z_index = -100
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3.0
-offset_bottom = -4.0
+offset_left = -168.0
+offset_top = -15.0
+offset_right = -168.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_6j1rx")
 info = ExtResource("2_75m2k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1032.0
-offset_bottom = -521.0
-grow_horizontal = 2
-grow_vertical = 2
+z_index = 20
+layout_mode = 2
+anchor_left = 0.146
+anchor_top = 0.023
+anchor_right = 0.306
+anchor_bottom = 0.296
+offset_left = -0.192017
+offset_top = 0.0959988
+offset_right = -0.512024
+offset_bottom = 0.192001
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
@@ -36,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.5
-offset_top = -20.0
-offset_right = 50.5
-offset_bottom = 20.0
+offset_left = -92.0
+offset_top = -19.5
+offset_right = 92.0
+offset_bottom = 19.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -47,14 +51,19 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0)
-z_index = 10
-layout_mode = 0
-offset_right = 123.0
-offset_bottom = 123.0
-script = ExtResource("3_gned8")
+[node name="DraggableComponent" parent="." instance=ExtResource("3_gned8")]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.144
+anchor_top = 0.02
+anchor_right = 0.304
+anchor_bottom = 0.293
+offset_left = 2.11198
+offset_top = 2.04
+offset_right = 1.79199
+offset_bottom = 2.13599
 
-[connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
-[connection signal="mouse_entered" from="Panel" to="Panel" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Panel" to="Panel" method="_on_mouse_exited"]
+[connection signal="component_clicked" from="DraggableComponent" to="." method="_on_component_clicked"]
+[connection signal="is_being_dragged_to" from="DraggableComponent" to="." method="_node_is_being_dragged_to"]
+[connection signal="mouse_hover" from="DraggableComponent" to="." method="_on_mouse_hover"]

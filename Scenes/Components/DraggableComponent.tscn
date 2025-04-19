@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://68vdd3vft60w"]
+
+[ext_resource type="Script" uid="uid://c3sduwqoggxj4" path="res://Scripts/Components/draggable_component.gd" id="1_7fr5i"]
+
+[node name="DraggableComponent" type="Control"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7fr5i")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

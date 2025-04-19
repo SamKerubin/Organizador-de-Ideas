@@ -1,22 +1,33 @@
 extends Control
 class_name BaseNode
 
-
 @export var info: NodeInfo = load("res://Resoruces/Nodes/node_info.tres").duplicate()
 
-@onready var node_name: RichTextLabel = $ColorRect/RichTextLabel
+@onready var draggable_component: DraggableComponent = $DraggableComponent
 @onready var node_color: ColorRect = $ColorRect
-@onready var node_panel: BaseNodePanel = $Panel
+@onready var node_name: RichTextLabel = $ColorRect/RichTextLabel
 
 var relations: Array[NodeRelation]
 
 func _ready() -> void:
 	NodeManager.node_deleted.connect(_on_node_deleted)
-	node_panel.node = self
+
 	update_visible_state()
 
 func _on_node_deleted(node_to_delete: BaseNode) -> void:
 	remove_relation_with(node_to_delete)
+
+func _on_component_clicked() -> void:
+	show_info()
+
+func _node_is_being_dragged_to(offset: Vector2) -> void:
+	global_position = offset
+
+func _on_mouse_hover(is_hovered: bool) -> void:
+	if is_hovered: 
+		if not have_any_relation(): node_color.color = Color.WEB_MAROON
+		else: node_color.color = Color.DARK_GREEN
+	else: set_node_color()
 
 func show_info() -> void:
 	NodeInfoManager.show_node_info(self)
@@ -31,11 +42,11 @@ func add_relation_with(n: BaseNode, reason: String) -> void:
 		print("Ya hay una relacion con este nodo")
 		return
 
-	var new_relation: NodeRelation = NodeRelation.new()
-	new_relation.node_related = n
-	new_relation.reason = reason
-
-	relations.append(new_relation)
+	var self_node_relation: NodeRelation = NodeRelation.new(n, reason)
+	var other_node_relation: NodeRelation = NodeRelation.new(self, "")
+	
+	relations.append(self_node_relation)
+	n.relations.append(other_node_relation)
 
 	update_visible_state()
 
@@ -52,14 +63,18 @@ func update_visible_state() -> void:
 	set_node_color()
 
 func set_node_color() -> void:
-	if relations == []: node_color.color = SavingManager.node_colors["unrelated_node"]
+	if not have_any_relation(): 
+		node_color.color = SavingManager.node_colors["unrelated_node"]
 	else: node_color.color = SavingManager.node_colors["related_node"]
-	
+
 	var font_color: String = "#" + SavingManager.node_colors["font_color"].to_html()
 	node_name.text = ("[color=%s]" % font_color) + node_name.text + "[/color]" 
 
 func get_relations() -> Array[NodeRelation]:
 	return relations
+
+func have_any_relation() -> bool:
+	return relations != []
 
 static func get_default_position(center: Vector2=Vector2.ZERO, radius: float= 100) -> Vector2:
 	var angle: float = randf() * TAU
