@@ -26,6 +26,8 @@ func delete_node(node_to_delete: BaseNode) -> void:
 	# Ask confirmation and other things first...
 	node_deleted.emit(node_to_delete)
 
+	node_to_delete.remove_all_relations()
+	nodes.erase(node_to_delete.info.name)
 	node_to_delete.queue_free()
 
 func get_node_with_name(node_name: String) -> BaseNode:

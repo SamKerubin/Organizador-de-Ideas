@@ -10,18 +10,36 @@ var reason: String = ""
 
 func _ready() -> void:
 	NodeConnectionManager.node_is_being_dragged.connect(_node_is_being_dragged)
+	NodeManager.node_deleted.connect(_on_node_deleted)
 
+#region Signals
 func _node_is_being_dragged(some_node: BaseNode) -> void:
 	if some_node != node_1 and some_node != node_2: return
 
 	point()
 
-func set_conection_between(node_a: BaseNode, node_b: BaseNode, reason: String) -> void:
+func _on_node_deleted(deleted_node: BaseNode) -> void:
+	for relation: NodeRelation in deleted_node.get_relations():
+		NodeConnectionManager.delete_connection_between(deleted_node, relation.get_related_node())
+
+func _on_mouse_entered() -> void:
+	print(reason)
+#endregion
+
+#region Connections
+func set_connection_between(node_a: BaseNode, node_b: BaseNode, reason: String) -> void:
 	node_1 = node_a
 	node_2 = node_b
 	self.reason = reason
 
 	point()
+
+func have_one_node_connected(node: BaseNode) -> bool:
+	return node == node_1 or node == node_2
+
+func connected_to(node_a: BaseNode, node_b: BaseNode) -> bool:
+	return have_one_node_connected(node_a) and have_one_node_connected(node_b)
+#endregion
 
 func point() -> void:
 	connection_line.clear_points()
@@ -37,8 +55,6 @@ func point() -> void:
 	panel.global_position = new_position - panel.size / 2
 	print("NP", new_position)
 	print("PS", panel.size / 2)
-	print("PP", panel.global_position, "\n")
+	print("PGP", panel.global_position, "\n")
 	panel.rotation = abs(y - x).angle()
 	
-func _on_mouse_entered() -> void:
-	print(reason)

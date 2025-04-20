@@ -14,8 +14,9 @@ func _ready() -> void:
 
 	update_visible_state()
 
+#region Signals
 func _on_node_deleted(node_to_delete: BaseNode) -> void:
-	remove_relation_with(node_to_delete)
+	remove_relation_between(node_to_delete)
 
 func _on_component_clicked() -> void:
 	show_info()
@@ -29,12 +30,11 @@ func _on_mouse_hover(is_hovered: bool) -> void:
 		if not have_any_relation(): node_color.color = Color.WEB_MAROON
 		else: node_color.color = Color.DARK_GREEN
 	else: set_node_color()
+#endregion
 
-func show_info() -> void:
-	NodeInfoManager.show_node_info(self)
-
+#region Node Relations
 func is_related_to(other_node: BaseNode) -> bool:
-	return relations.find(func(x: NodeRelation) -> bool:
+	return get_relations().find(func(x: NodeRelation) -> bool:
 		return x.get_related_node() == other_node
 	) != -1
 
@@ -44,23 +44,47 @@ func add_relation_with(n: BaseNode, reason: String) -> void:
 		return
 
 	var self_node_relation: NodeRelation = NodeRelation.new(n, reason)
-	var other_node_relation: NodeRelation = NodeRelation.new(self, "")
+	var other_node_relation: NodeRelation = NodeRelation.new(self, reason)
 	
 	relations.append(self_node_relation)
 	n.relations.append(other_node_relation)
 
 	update_visible_state()
 
-func remove_relation_with(n: BaseNode) -> void:
+func remove_relation_between(n: BaseNode) -> void:
 	relations = relations.filter(func(x: NodeRelation) -> bool: 
 		return x.get_related_node() != n
 	)
 
-	update_visible_state()
+	n.relations = n.relations.filter(func(x: NodeRelation) -> bool: 
+		return x.get_related_node() != self
+	)
 
+	update_visible_state()
+	n.update_visible_state()
+
+func remove_all_relations() -> void:
+	for relation: NodeRelation in get_relations():
+		remove_relation_between(relation.get_related_node())
+
+func get_relation_with(other_node: BaseNode) -> NodeRelation:
+	for relation: NodeRelation in get_relations():
+		print(relation.get_related_node().info.name)
+		if relation.get_related_node() == other_node:
+			return relation
+
+	return null
+
+func get_relations() -> Array[NodeRelation]:
+	return relations
+
+func have_any_relation() -> bool:
+	return relations != []
+#endregion
+
+#region Visible Node States
 func update_visible_state() -> void:
 	node_name.text = info.name
-	# Update conections too
 	set_node_color()
 
 func set_node_color() -> void:
@@ -69,13 +93,11 @@ func set_node_color() -> void:
 	else: node_color.color = SavingManager.node_colors["related_node"]
 
 	var font_color: String = "#" + SavingManager.node_colors["font_color"].to_html()
-	node_name.text = ("[color=%s]" % font_color) + node_name.text + "[/color]" 
+	node_name.text = ("[color=%s]" % font_color) + node_name.text + "[/color]"
+#endregion
 
-func get_relations() -> Array[NodeRelation]:
-	return relations
-
-func have_any_relation() -> bool:
-	return relations != []
+func show_info() -> void:
+	NodeInfoManager.show_node_info(self)
 
 static func get_default_position(center: Vector2=Vector2.ZERO, radius: float=100) -> Vector2:
 	var angle: float = randf() * TAU
