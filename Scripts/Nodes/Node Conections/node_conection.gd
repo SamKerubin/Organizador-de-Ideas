@@ -53,8 +53,5 @@ func point() -> void:
 
 	var new_position: Vector2 = (x + y) / 2
 	panel.global_position = new_position - panel.size / 2
-	print("NP", new_position)
-	print("PS", panel.size / 2)
-	print("PGP", panel.global_position, "\n")
 	panel.rotation = abs(y - x).angle()
 	

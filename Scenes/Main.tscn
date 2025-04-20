@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5logyu1qpfxo"]
+[gd_scene load_steps=3 format=3 uid="uid://c5logyu1qpfxo"]
 
 [ext_resource type="Script" uid="uid://duev16mlxpqcy" path="res://Scripts/main.gd" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://34iv6n4luh0t" path="res://Scenes/Project Map/MainProject.tscn" id="2_idj7w"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -11,4 +12,5 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_idj7w")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="MainProject" parent="." instance=ExtResource("2_idj7w")]
+layout_mode = 1

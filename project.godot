@@ -13,6 +13,10 @@ config_version=5
 config/name="Nuevo Proyecto de Juego"
 run/main_scene="uid://c5logyu1qpfxo"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 0.670588)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -21,6 +25,7 @@ NodeInfoManager="*res://Singletons/node_info_manager.gd"
 NodeManager="*res://Singletons/node_manager.gd"
 SavingManager="*res://Singletons/saving_manager.gd"
 NodeConnectionManager="*res://Singletons/node_connection_manager.gd"
+InterfaceManager="*res://Singletons/interface_manager.gd"
 
 [debug]
 

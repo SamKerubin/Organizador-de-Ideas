@@ -4,26 +4,27 @@ const NODE_SCENE: PackedScene = preload("uid://ch4tu3aqobhrx")
 
 signal node_deleted(deleted_node: BaseNode)
 
+var instantiate_scene: MainProject
 var nodes: Dictionary[String, BaseNode]
 
 func create_node(node_name: String, node_desc: String, position: Vector2=BaseNode.get_default_position(),
 				node_relations: Array[NodeRelation]=[]) -> BaseNode:
 	if node_name in nodes:
 		print("Nodo ya existente")
-		return
+		return null
 
 	var node: BaseNode = NODE_SCENE.instantiate()
+
 	node.info.name = node_name
 	node.info.description = node_desc
 	node.relations = node_relations
 	node.position = position
-
 	nodes.set(node_name, node)
-	
+	instantiate_scene.add_child(node)
+
 	return node
 
 func delete_node(node_to_delete: BaseNode) -> void:
-	# Ask confirmation and other things first...
 	node_deleted.emit(node_to_delete)
 
 	node_to_delete.remove_all_relations()
