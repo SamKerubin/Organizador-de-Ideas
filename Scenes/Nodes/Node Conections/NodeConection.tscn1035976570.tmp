@@ -13,19 +13,21 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_om8ia")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 1.0
+offset_right = 1145.0
+offset_bottom = 11.0
+mouse_filter = 2
+
+[node name="Line2D" type="Line2D" parent="Panel"]
 z_index = -20
-position = Vector2(1, 5)
+position = Vector2(6, 4)
 scale = Vector2(0.994837, 0.8)
 points = PackedVector2Array(0, -1.25, 1149.94, -1.25)
 width = 5.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="Panel" type="Panel" parent="Line2D"]
-offset_left = -1.00519
-offset_top = -27.5
-offset_right = 1148.99
-offset_bottom = 21.5
-mouse_filter = 2
-
-[connection signal="mouse_entered" from="Line2D/Panel" to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_mouse_entered"]

@@ -21,6 +21,7 @@ func _on_component_clicked() -> void:
 	show_info()
 
 func _node_is_being_dragged_to(offset: Vector2) -> void:
+	NodeConnectionManager.node_is_being_dragged.emit(self)
 	global_position = offset
 
 func _on_mouse_hover(is_hovered: bool) -> void:
