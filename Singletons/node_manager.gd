@@ -33,3 +33,9 @@ func delete_node(node_to_delete: BaseNode) -> void:
 
 func get_node_with_name(node_name: String) -> BaseNode:
 	return nodes.get(node_name)
+
+func get_related_nodes() -> Array[BaseNode]:
+	return nodes.values().filter(func(x: BaseNode) -> bool: return not x.have_any_relation())
+
+func get_unrelated_nodes() -> Array[BaseNode]:
+	return nodes.values().filter(func(x: BaseNode) -> bool: return x.have_any_relation())

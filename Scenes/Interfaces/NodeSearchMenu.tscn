@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq1pwhs1vhndg"]
+
+[ext_resource type="Script" uid="uid://bp38b8u1x083j" path="res://Scripts/Interfaces/node_search_menu.gd" id="1_63d6g"]
+
+[node name="NodeSearchMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_63d6g")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 342.0
+offset_top = 67.0
+offset_right = 898.0
+offset_bottom = -75.0
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 125.0
+offset_right = 513.0
+offset_bottom = 349.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 91.0
+offset_bottom = 78.0
+text = "Unrelated
+Nodes"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 24.0
+offset_right = 41.0
+offset_bottom = 78.0
+grow_horizontal = 2
+text = "Related 
+Nodes"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -106.0
+offset_top = 24.0
+offset_right = -25.0
+offset_bottom = 78.0
+grow_horizontal = 0
+text = "All 
+Nodes"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 886.0
+offset_top = 55.0
+offset_right = 910.0
+offset_bottom = 87.0
+mouse_default_cursor_shape = 2
+text = "x"
+
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_related_nodes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button2" to="." method="_on_unrelated_nodes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button3" to="." method="_on_all_nodes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_close_button_pressed"]

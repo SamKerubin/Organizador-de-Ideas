@@ -78,7 +78,7 @@ func get_relations() -> Array[NodeRelation]:
 	return relations
 
 func have_any_relation() -> bool:
-	return relations != []
+	return not relations.is_empty()
 #endregion
 
 #region Visible Node States
