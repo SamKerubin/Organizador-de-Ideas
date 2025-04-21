@@ -69,7 +69,6 @@ func remove_all_relations() -> void:
 
 func get_relation_with(other_node: BaseNode) -> NodeRelation:
 	for relation: NodeRelation in get_relations():
-		print(relation.get_related_node().info.name)
 		if relation.get_related_node() == other_node:
 			return relation
 

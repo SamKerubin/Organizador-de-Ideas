@@ -17,3 +17,5 @@ script = ExtResource("1_lp6pc")
 offset_right = 43.0
 offset_bottom = 42.0
 text = "|||"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
