@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bax452bgxw2wq"]
 
-[ext_resource type="Script" uid="uid://ddkdqh4xui1wm" path="res://Scripts/Nodes/Node Conections/node_conection.gd" id="1_om8ia"]
+[ext_resource type="Script" uid="uid://ddkdqh4xui1wm" path="res://Scripts/Nodes/Node Connections/node_connection.gd" id="1_om8ia"]
 
 [node name="NodeConection" type="Control"]
 z_index = -100
