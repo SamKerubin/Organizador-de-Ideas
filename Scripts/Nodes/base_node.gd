@@ -49,6 +49,8 @@ func add_relation_with(n: BaseNode, reason: String) -> void:
 	relations.append(self_node_relation)
 	n.relations.append(other_node_relation)
 
+	NodeConnectionManager.create_connection_between(self, n)
+
 	update_visible_state()
 
 func remove_relation_between(n: BaseNode) -> void:
@@ -97,7 +99,3 @@ func set_node_color() -> void:
 
 func show_info() -> void:
 	NodeInfoManager.show_node_info(self)
-
-static func get_default_position(center: Vector2=Vector2.ZERO, radius: float=100) -> Vector2:
-	var angle: float = randf() * TAU
-	return center + Vector2(cos(angle), sin(angle))

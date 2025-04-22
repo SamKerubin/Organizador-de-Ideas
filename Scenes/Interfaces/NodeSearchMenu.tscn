@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq1pwhs1vhndg"]
+[gd_scene load_steps=3 format=3 uid="uid://bq1pwhs1vhndg"]
 
 [ext_resource type="Script" uid="uid://bp38b8u1x083j" path="res://Scripts/Interfaces/node_search_menu.gd" id="1_63d6g"]
+[ext_resource type="PackedScene" uid="uid://bbyjegpir1e5g" path="res://Scenes/Interfaces/NodeContainer.tscn" id="2_jn04l"]
 
 [node name="NodeSearchMenu" type="Control"]
 layout_mode = 3
@@ -33,18 +34,13 @@ offset_right = 898.0
 offset_bottom = -75.0
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 125.0
-offset_right = 513.0
-offset_bottom = 349.0
-
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel/ScrollContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 5
-theme_override_constants/v_separation = 15
-columns = 3
+[node name="NodeContainer" parent="CanvasLayer/Panel" instance=ExtResource("2_jn04l")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 107.0
+offset_top = 147.0
+offset_right = -96.0
+offset_bottom = -119.0
 
 [node name="Button" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 1
@@ -89,6 +85,7 @@ offset_bottom = 87.0
 mouse_default_cursor_shape = 2
 text = "x"
 
+[connection signal="node_clicked" from="CanvasLayer/Panel/NodeContainer" to="." method="_on_node_clicked"]
 [connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_related_nodes_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Button2" to="." method="_on_unrelated_nodes_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Button3" to="." method="_on_all_nodes_button_pressed"]

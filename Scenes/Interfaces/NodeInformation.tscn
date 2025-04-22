@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://b61qxg1xtjnws"]
+
+[ext_resource type="Script" uid="uid://ba33l2rtwodc7" path="res://Scripts/Interfaces/node_information.gd" id="1_0faut"]
+[ext_resource type="PackedScene" uid="uid://bbyjegpir1e5g" path="res://Scenes/Interfaces/NodeContainer.tscn" id="2_hr0sm"]
+
+[node name="NodeInformation" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0faut")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 444.0
+offset_top = 129.0
+offset_right = 711.0
+offset_bottom = 423.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 21.0
+offset_right = 99.0
+offset_bottom = 44.0
+text = "Nombre: "
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 21.0
+offset_right = 148.0
+offset_bottom = 44.0
+
+[node name="Label3" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 70.0
+offset_right = 124.0
+offset_bottom = 93.0
+text = "Descripcion: "
+
+[node name="Label4" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 70.0
+offset_right = 223.0
+offset_bottom = 93.0
+
+[node name="Label5" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -41.5
+offset_right = 45.5
+offset_bottom = -18.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Relaciones"
+
+[node name="NodeContainer" parent="CanvasLayer/Panel" instance=ExtResource("2_hr0sm")]
+layout_mode = 1
+offset_left = 68.0
+offset_top = 135.0
+offset_right = -70.0
+offset_bottom = -35.0
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 699.0
+offset_top = 122.0
+offset_right = 725.0
+offset_bottom = 153.0
+text = "X"
+
+[connection signal="node_clicked" from="CanvasLayer/Panel/NodeContainer" to="." method="_on_node_clicked"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_close_button_pressed"]

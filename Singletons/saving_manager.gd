@@ -1,11 +1,11 @@
 extends Node
 
 var node_colors: Dictionary[String, Color] = {
-	"related_node": Color(0, 255, 0, 1),
-	"unrelated_node": Color(255, 0, 0 , 1),
+	"related_node": Color.GREEN,
+	"unrelated_node": Color.RED,
 	"conection_color": Color(0, 0, 0, .6),
-	"font_color": Color(1, 1, 1, 1),
-	"hover_color": Color(150, 0, 0, 1)
+	"font_color": Color.WHITE,
+	"hover_color": Color.DARK_RED
 }
 
 func save() -> void: pass

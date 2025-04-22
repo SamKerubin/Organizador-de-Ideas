@@ -7,7 +7,7 @@ signal node_deleted(deleted_node: BaseNode)
 var instantiate_scene: MainProject
 var nodes: Dictionary[String, BaseNode]
 
-func create_node(node_name: String, node_desc: String, position: Vector2=BaseNode.get_default_position(),
+func create_node(node_name: String, node_desc: String, position: Vector2=Vector2.ZERO,
 				node_relations: Array[NodeRelation]=[]) -> BaseNode:
 	if node_name in nodes:
 		print("Nodo ya existente")
@@ -18,7 +18,7 @@ func create_node(node_name: String, node_desc: String, position: Vector2=BaseNod
 	node.info.name = node_name
 	node.info.description = node_desc
 	node.relations = node_relations
-	node.position = position
+	node.position = position if position != Vector2.ZERO else get_node_default_position()
 	nodes.set(node_name, node)
 	instantiate_scene.add_child(node)
 
@@ -39,3 +39,6 @@ func get_related_nodes() -> Array[BaseNode]:
 
 func get_unrelated_nodes() -> Array[BaseNode]:
 	return nodes.values().filter(func(x: BaseNode) -> bool: return x.have_any_relation())
+
+func get_node_default_position() -> Vector2:
+	return get_viewport().get_visible_rect().size / 2

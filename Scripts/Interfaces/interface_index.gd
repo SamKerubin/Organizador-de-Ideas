@@ -3,6 +3,7 @@ class_name InterfaceIndex
 
 const INTERFACES: Dictionary[InterfaceType, PackedScene] = {
 	InterfaceType.NODE_SEARCH_MENU: preload("uid://bq1pwhs1vhndg"),
+	InterfaceType.NODE_INFORMATION: preload("uid://b61qxg1xtjnws"),
 	InterfaceType.PROJECT_INTERFACE: preload("uid://bq3ixrp0u62b")
 }
 

@@ -19,6 +19,3 @@ func remove_interface(interface: BaseInterface, type: InterfaceIndex.InterfaceTy
 	if type in active_interfaces:
 		active_interfaces.get(type).erase(interface)
 		interface.queue_free()
-
-func remove_all_interfaces_with_type(type: InterfaceIndex.InterfaceType) -> void:
-	if type in active_interfaces: active_interfaces.erase(type)
