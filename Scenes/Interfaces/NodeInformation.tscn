@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b61qxg1xtjnws"]
 
 [ext_resource type="Script" uid="uid://ba33l2rtwodc7" path="res://Scripts/Interfaces/node_information.gd" id="1_0faut"]
-[ext_resource type="PackedScene" uid="uid://bbyjegpir1e5g" path="res://Scenes/Interfaces/NodeContainer.tscn" id="2_hr0sm"]
+[ext_resource type="PackedScene" uid="uid://bbyjegpir1e5g" path="res://Scenes/Components/NodeContainer.tscn" id="2_hr0sm"]
 
 [node name="NodeInformation" type="Control"]
 z_index = 100

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bq1pwhs1vhndg"]
 
 [ext_resource type="Script" uid="uid://bp38b8u1x083j" path="res://Scripts/Interfaces/node_search_menu.gd" id="1_63d6g"]
-[ext_resource type="PackedScene" uid="uid://bbyjegpir1e5g" path="res://Scenes/Interfaces/NodeContainer.tscn" id="2_jn04l"]
+[ext_resource type="PackedScene" uid="uid://bbyjegpir1e5g" path="res://Scenes/Components/NodeContainer.tscn" id="2_jn04l"]
 
 [node name="NodeSearchMenu" type="Control"]
 layout_mode = 3

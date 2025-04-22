@@ -95,7 +95,7 @@ func set_node_color() -> void:
 
 	var font_color: String = "#" + SavingManager.node_colors["font_color"].to_html()
 	node_name.text = ("[color=%s]" % font_color) + node_name.text + "[/color]"
-#endregion
 
 func show_info() -> void:
 	NodeInfoManager.show_node_info(self)
+#endregion
