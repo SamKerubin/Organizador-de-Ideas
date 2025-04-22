@@ -12,4 +12,3 @@ For now... Feel free to look around the repository
 And most important... Dont be Shy :D... If you want to tell me something about this project or whatever you want, you can contact me via Email or Instagram, just search it on my profile :3
 
 For now... Thanks for reading this, i really apreciate it
-z
