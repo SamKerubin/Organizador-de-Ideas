@@ -7,8 +7,8 @@ signal node_deleted(deleted_node: BaseNode)
 var instantiate_scene: MainProject
 var nodes: Dictionary[String, BaseNode]
 
-func create_node(node_name: String, node_desc: String, position: Vector2=Vector2.ZERO,
-				node_relations: Array[NodeRelation]=[]) -> BaseNode:
+func create_node(node_name: String, node_desc: String, node_relations: Array[NodeRelation]=[],
+				position: Vector2=Vector2.ZERO) -> BaseNode:
 	if node_name in nodes:
 		print("Nodo ya existente")
 		return null

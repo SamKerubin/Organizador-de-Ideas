@@ -4,7 +4,6 @@ class_name NodeInformation
 @onready var node_name: Label = $CanvasLayer/Panel/Label2
 @onready var description: Label = $CanvasLayer/Panel/Label4
 @onready var node_relations: NodeContainer = $CanvasLayer/Panel/NodeContainer
-@onready var close_button: Button = $CanvasLayer/Button
 
 func _ready() -> void:
 	node_relations.set_container_columns(2)

@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv3n6758gih8s"]
+
+[ext_resource type="Script" uid="uid://c7h4nbyu5j24c" path="res://Scripts/Interfaces/node_creation.gd" id="1_3wfr8"]
+
+[node name="NodeCreation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3wfr8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -234.0
+offset_right = 259.0
+offset_bottom = 234.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "Node Creation"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 64.0
+offset_right = 123.0
+offset_bottom = 87.0
+text = "Node Name"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.264
+anchor_right = 0.508
+anchor_bottom = 0.264
+offset_left = -236.144
+offset_top = -24.552
+offset_right = 228.856
+offset_bottom = 14.448
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "MyNode"
+
+[node name="Label3" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 153.0
+offset_right = 166.0
+offset_bottom = 176.0
+text = "Node Description"
+
+[node name="TextEdit2" type="TextEdit" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.508
+anchor_top = 0.264
+anchor_right = 0.508
+anchor_bottom = 0.264
+offset_left = -236.144
+offset_top = 67.448
+offset_right = 231.856
+offset_bottom = 175.448
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Description...."
+
+[node name="Label4" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 318.0
+offset_right = 138.0
+offset_bottom = 341.0
+text = "Add Relations"
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = 75.5
+offset_right = 63.5
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Search Nodes"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.5
+offset_top = -55.0
+offset_right = 52.5
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Create Node"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.144
+anchor_right = 0.5
+anchor_bottom = 0.144
+offset_left = 246.0
+offset_top = -15.312
+offset_right = 276.0
+offset_bottom = 15.688
+text = "X"
+
+[node name="Panel3" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 317.0
+offset_top = 88.0
+offset_right = 835.0
+offset_bottom = 558.0
+
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_search_nodes_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button2" to="." method="_on_create_node_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_close_button_pressed"]
