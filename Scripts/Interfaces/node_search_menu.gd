@@ -1,6 +1,10 @@
 extends BaseInterface
 class_name NodeSearchMenu
 
+# Im finishing this for now,
+# This is only a prototy and ill make another one later on
+# See ya! :3
+
 @onready var node_container: NodeContainer = $CanvasLayer/Panel/NodeContainer
 @onready var search_related_nodes: Button = $CanvasLayer/Panel/Button
 @onready var search_unrelated_nodes: Button = $CanvasLayer/Panel/Button2
